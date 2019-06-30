@@ -380,11 +380,7 @@ namespace RubiksCubeSimulator.Rubiks
             }
         }
 
-        public void RotateCube(CubeSide side, Rotation rotation)
-        {
-            if (side == CubeSide.None) return;
-            RotateFace(side, rotation);
-        }
+        
         public void MakeMove(CubeSide side, Rotation rotation)
         {
             if (side == CubeSide.None) return;
