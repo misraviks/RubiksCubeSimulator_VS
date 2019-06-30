@@ -122,15 +122,46 @@ namespace RubiksCubeSimulator.Forms
             {
                 try
                 {
-                    if (str.Contains("2"))
+                    string moveToBeMade = str.Replace("'", "i");
+                    if (str.ToLower() == "h")
                     {
-                        string[] vs = str.Split('2');
+                        // UP Inverse and Down 
+                        moveList.Add(new CubeMove("Ui"));
+                        moveList.Add(new CubeMove("D"));
+                    }
+                    else if (str.ToLower() == "hi")
+                    {
+                        // UP and Down Inverse
+                        moveList.Add(new CubeMove("U"));
+                        moveList.Add(new CubeMove("Di"));
+                    }
+                    else if (str.ToLower() == "v")
+                    {
+
+                        moveList.Add(new CubeMove("L"));
+                        moveList.Add(new CubeMove("Ri"));
+                    }
+                    else if (str.ToLower() == "vi")
+                    {
+
+                        moveList.Add(new CubeMove("Li"));
+                        moveList.Add(new CubeMove("R"));
+                    }
+                    else if (str.ToLower() == "rs")
+                    {
+                        //moveList.Add(new CubeMove(CubeSide.Right, Rotation.Cw));
+
+
+                    }
+                    else if (moveToBeMade.Contains("2"))
+                    {
+                        string[] vs = moveToBeMade.Split('2');
                         foreach (string s in vs)
                         {
-                            moveList.Add(new CubeMove(vs[0].Replace("'", "i")));
+                            moveList.Add(new CubeMove(vs[0]));
                         }
                     }
-                    else moveList.Add(new CubeMove(str.Replace("'", "i")));
+                    else moveList.Add(new CubeMove(moveToBeMade));
                 }
                 catch (ArgumentException)
                 {
