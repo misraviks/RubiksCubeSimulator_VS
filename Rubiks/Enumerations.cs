@@ -12,7 +12,26 @@
         /// <summary>
         /// Counter-clockwise.
         /// </summary>
-        Ccw
+        Ccw,
+        /// <summary>
+        /// Right Spin
+        /// </summary>
+        RTurn,
+        /// <summary>
+        /// Left Spin
+        /// </summary>
+        LTurn,
+        /// <summary>
+        /// UpWard
+        /// </summary>
+        UpWard,
+        /// <summary>
+        /// DownWard
+        /// </summary>
+        DownWard
+
+
+
     }
 
     /// <summary>

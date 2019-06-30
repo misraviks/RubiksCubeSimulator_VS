@@ -55,19 +55,19 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new System.Drawing.Point(15, 17);
+            label7.Location = new System.Drawing.Point(17, 21);
             label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(71, 17);
+            label7.Size = new System.Drawing.Size(82, 20);
             label7.TabIndex = 18;
             label7.Text = "Command";
             // 
             // buttonUndoChanges
             // 
             this.buttonUndoChanges.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonUndoChanges.Location = new System.Drawing.Point(454, 11);
+            this.buttonUndoChanges.Location = new System.Drawing.Point(511, 14);
             this.buttonUndoChanges.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonUndoChanges.Name = "buttonUndoChanges";
-            this.buttonUndoChanges.Size = new System.Drawing.Size(166, 28);
+            this.buttonUndoChanges.Size = new System.Drawing.Size(187, 35);
             this.buttonUndoChanges.TabIndex = 16;
             this.buttonUndoChanges.Text = "Undo All Changes";
             this.toolTip.SetToolTip(this.buttonUndoChanges, "Undo all changes made since the application has started.");
@@ -79,10 +79,10 @@
             this.textBoxCommand.AcceptsReturn = true;
             this.textBoxCommand.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxCommand.Location = new System.Drawing.Point(92, 14);
+            this.textBoxCommand.Location = new System.Drawing.Point(104, 18);
             this.textBoxCommand.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxCommand.Name = "textBoxCommand";
-            this.textBoxCommand.Size = new System.Drawing.Size(216, 22);
+            this.textBoxCommand.Size = new System.Drawing.Size(242, 26);
             this.textBoxCommand.TabIndex = 17;
             this.toolTip.SetToolTip(this.textBoxCommand, "Space-separated algorithms.");
             this.textBoxCommand.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxCommand_KeyDown);
@@ -93,10 +93,9 @@
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblStatus,
             this.labellErrorStatus});
-            this.statusStrip.Location = new System.Drawing.Point(0, 550);
+            this.statusStrip.Location = new System.Drawing.Point(0, 693);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 12, 0);
-            this.statusStrip.Size = new System.Drawing.Size(634, 22);
+            this.statusStrip.Size = new System.Drawing.Size(713, 22);
             this.statusStrip.SizingGrip = false;
             this.statusStrip.TabIndex = 19;
             this.statusStrip.Text = "statusStrip";
@@ -109,7 +108,7 @@
             // labellErrorStatus
             // 
             this.labellErrorStatus.Name = "labellErrorStatus";
-            this.labellErrorStatus.Size = new System.Drawing.Size(621, 17);
+            this.labellErrorStatus.Size = new System.Drawing.Size(698, 17);
             this.labellErrorStatus.Spring = true;
             this.labellErrorStatus.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -119,10 +118,10 @@
             this.checkBoxLockColors.Appearance = System.Windows.Forms.Appearance.Button;
             this.checkBoxLockColors.BackgroundImage = global::RubiksCubeSimulator.Properties.Resources.Lock;
             this.checkBoxLockColors.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.checkBoxLockColors.Location = new System.Drawing.Point(545, 497);
+            this.checkBoxLockColors.Location = new System.Drawing.Point(613, 621);
             this.checkBoxLockColors.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBoxLockColors.Name = "checkBoxLockColors";
-            this.checkBoxLockColors.Size = new System.Drawing.Size(75, 38);
+            this.checkBoxLockColors.Size = new System.Drawing.Size(84, 48);
             this.checkBoxLockColors.TabIndex = 20;
             this.checkBoxLockColors.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBoxLockColors.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -134,10 +133,10 @@
             // buttonCleanSlate
             // 
             this.buttonCleanSlate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCleanSlate.Location = new System.Drawing.Point(314, 12);
+            this.buttonCleanSlate.Location = new System.Drawing.Point(353, 15);
             this.buttonCleanSlate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonCleanSlate.Name = "buttonCleanSlate";
-            this.buttonCleanSlate.Size = new System.Drawing.Size(134, 28);
+            this.buttonCleanSlate.Size = new System.Drawing.Size(151, 35);
             this.buttonCleanSlate.TabIndex = 23;
             this.buttonCleanSlate.Text = "Clean Slate";
             this.toolTip.SetToolTip(this.buttonCleanSlate, "Start from a solved, or unmixed cube.");
@@ -148,11 +147,11 @@
             // 
             this.cubeUp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cubeUp.Face = RubiksCubeSimulator.Rubiks.CubeSide.Up;
-            this.cubeUp.Location = new System.Drawing.Point(155, 3);
+            this.cubeUp.Location = new System.Drawing.Point(174, 3);
             this.cubeUp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cubeUp.Name = "cubeUp";
             this.cubeUp.NewColor = System.Drawing.Color.Empty;
-            this.cubeUp.Size = new System.Drawing.Size(144, 143);
+            this.cubeUp.Size = new System.Drawing.Size(163, 180);
             this.cubeUp.TabIndex = 9;
             this.cubeUp.Text = "colorGridDisplay1";
             this.toolTip.SetToolTip(this.cubeUp, "Top Face");
@@ -162,11 +161,11 @@
             // 
             this.cubeBack.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cubeBack.Face = RubiksCubeSimulator.Rubiks.CubeSide.Back;
-            this.cubeBack.Location = new System.Drawing.Point(457, 151);
+            this.cubeBack.Location = new System.Drawing.Point(514, 188);
             this.cubeBack.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cubeBack.Name = "cubeBack";
             this.cubeBack.NewColor = System.Drawing.Color.Empty;
-            this.cubeBack.Size = new System.Drawing.Size(144, 143);
+            this.cubeBack.Size = new System.Drawing.Size(163, 180);
             this.cubeBack.TabIndex = 3;
             this.cubeBack.Text = "colorGridDisplay1";
             this.toolTip.SetToolTip(this.cubeBack, "Back Face");
@@ -176,11 +175,11 @@
             // 
             this.cubeFront.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cubeFront.Face = RubiksCubeSimulator.Rubiks.CubeSide.Front;
-            this.cubeFront.Location = new System.Drawing.Point(155, 151);
+            this.cubeFront.Location = new System.Drawing.Point(174, 188);
             this.cubeFront.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cubeFront.Name = "cubeFront";
             this.cubeFront.NewColor = System.Drawing.Color.Empty;
-            this.cubeFront.Size = new System.Drawing.Size(144, 143);
+            this.cubeFront.Size = new System.Drawing.Size(163, 180);
             this.cubeFront.TabIndex = 0;
             this.cubeFront.Text = "colorGridDisplay1";
             this.toolTip.SetToolTip(this.cubeFront, "Front Face");
@@ -190,11 +189,11 @@
             // 
             this.cubeDown.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cubeDown.Face = RubiksCubeSimulator.Rubiks.CubeSide.Down;
-            this.cubeDown.Location = new System.Drawing.Point(155, 299);
+            this.cubeDown.Location = new System.Drawing.Point(174, 373);
             this.cubeDown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cubeDown.Name = "cubeDown";
             this.cubeDown.NewColor = System.Drawing.Color.Empty;
-            this.cubeDown.Size = new System.Drawing.Size(144, 143);
+            this.cubeDown.Size = new System.Drawing.Size(163, 180);
             this.cubeDown.TabIndex = 11;
             this.cubeDown.Text = "colorGridDisplay1";
             this.toolTip.SetToolTip(this.cubeDown, "Bottom Face");
@@ -204,11 +203,11 @@
             // 
             this.cubeRight.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cubeRight.Face = RubiksCubeSimulator.Rubiks.CubeSide.Right;
-            this.cubeRight.Location = new System.Drawing.Point(306, 151);
+            this.cubeRight.Location = new System.Drawing.Point(344, 188);
             this.cubeRight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cubeRight.Name = "cubeRight";
             this.cubeRight.NewColor = System.Drawing.Color.Empty;
-            this.cubeRight.Size = new System.Drawing.Size(144, 143);
+            this.cubeRight.Size = new System.Drawing.Size(163, 180);
             this.cubeRight.TabIndex = 5;
             this.cubeRight.Text = "colorGridDisplay1";
             this.toolTip.SetToolTip(this.cubeRight, "Right Face");
@@ -218,11 +217,11 @@
             // 
             this.cubeLeft.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cubeLeft.Face = RubiksCubeSimulator.Rubiks.CubeSide.Left;
-            this.cubeLeft.Location = new System.Drawing.Point(4, 151);
+            this.cubeLeft.Location = new System.Drawing.Point(4, 188);
             this.cubeLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cubeLeft.Name = "cubeLeft";
             this.cubeLeft.NewColor = System.Drawing.Color.Empty;
-            this.cubeLeft.Size = new System.Drawing.Size(144, 143);
+            this.cubeLeft.Size = new System.Drawing.Size(163, 180);
             this.cubeLeft.TabIndex = 7;
             this.cubeLeft.Text = "colorGridDisplay1";
             this.toolTip.SetToolTip(this.cubeLeft, "Left Face");
@@ -235,10 +234,10 @@
             this.colorStrip.Colors = new System.Drawing.Color[] {
         System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128))))),
         System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))))};
-            this.colorStrip.Location = new System.Drawing.Point(15, 497);
+            this.colorStrip.Location = new System.Drawing.Point(17, 621);
             this.colorStrip.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.colorStrip.Name = "colorStrip";
-            this.colorStrip.Size = new System.Drawing.Size(525, 38);
+            this.colorStrip.Size = new System.Drawing.Size(591, 48);
             this.colorStrip.TabIndex = 15;
             this.colorStrip.Text = "colorStrip1";
             this.toolTip.SetToolTip(this.colorStrip, "Pick a color to set the cubes with.");
@@ -262,21 +261,22 @@
             this.tableLayoutPanel.Controls.Add(this.cubeDown, 1, 2);
             this.tableLayoutPanel.Controls.Add(this.cubeRight, 2, 1);
             this.tableLayoutPanel.Controls.Add(this.cubeLeft, 0, 1);
-            this.tableLayoutPanel.Location = new System.Drawing.Point(16, 46);
-            this.tableLayoutPanel.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel.Location = new System.Drawing.Point(18, 58);
+            this.tableLayoutPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
             this.tableLayoutPanel.RowCount = 3;
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(605, 445);
+            this.tableLayoutPanel.Size = new System.Drawing.Size(681, 556);
             this.tableLayoutPanel.TabIndex = 22;
+            this.tableLayoutPanel.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.tableLayoutPanel_PreviewKeyDown);
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(634, 572);
+            this.ClientSize = new System.Drawing.Size(713, 715);
             this.Controls.Add(this.buttonCleanSlate);
             this.Controls.Add(this.tableLayoutPanel);
             this.Controls.Add(this.checkBoxLockColors);
@@ -291,6 +291,7 @@
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Rubiks Cube Simulator";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.tableLayoutPanel.ResumeLayout(false);
@@ -306,6 +307,7 @@
         private CubeFaceDisplay cubeLeft;
         private CubeFaceDisplay cubeRight;
         private CubeFaceDisplay cubeDown;
+        private CubeFaceDisplay cubeSpin;
         private ColorStrip colorStrip;
         private System.Windows.Forms.Button buttonUndoChanges;
         private System.Windows.Forms.TextBox textBoxCommand;

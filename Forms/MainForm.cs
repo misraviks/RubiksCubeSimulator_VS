@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using RubiksCubeSimulator.Rubiks;
 
@@ -105,10 +106,16 @@ namespace RubiksCubeSimulator.Forms
 
         private void textBoxCommand_KeyDown(object sender, KeyEventArgs e)
         {
+           // String s1 = Regex.Match("helo12s12", @"\d+").Value; 
 
             String Scramble = "D2 U2 R B D F' L2 F2 D U B' U2 D2 L2 B' L' F R L F2 U2 L2 U2 D' L2";
             textBoxCommand.BackColor = Color.FromKnownColor(KnownColor.Window);
+            if (e.KeyCode == Keys.Left || e.KeyCode == Keys.Right|| e.KeyCode == Keys.Up || e.KeyCode == Keys.Down)
+            {
+                KeyMove(e.KeyCode);
+            }
             if (e.KeyCode != Keys.Enter) return;
+            
             string lower = textBoxCommand.Text;
             if (lower == "clean slate") rubiksCube.CleanSlate();
             string[] splitted = textBoxCommand.Text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
@@ -146,20 +153,6 @@ namespace RubiksCubeSimulator.Forms
 
                         moveList.Add(new CubeMove("Li"));
                         moveList.Add(new CubeMove("R"));
-                    }
-                    else if (str.ToLower() == "rs")
-                    {
-                        //moveList.Add(new CubeMove(CubeSide.Right, Rotation.Cw));
-
-
-                    }
-                    else if (moveToBeMade.Contains("2"))
-                    {
-                        string[] vs = moveToBeMade.Split('2');
-                        foreach (string s in vs)
-                        {
-                            moveList.Add(new CubeMove(vs[0]));
-                        }
                     }
                     else moveList.Add(new CubeMove(moveToBeMade));
                 }
@@ -213,5 +206,48 @@ namespace RubiksCubeSimulator.Forms
                 lblStatus.Text = "Last Move: " + move;
             }
         }
+
+        private void tableLayoutPanel_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            KeyMove(e.KeyCode);
+        }
+
+        private void KeyMove(Keys keys)
+        {
+            string movement = "";
+            switch (keys)
+            {
+                case Keys.Left:
+                    movement = "LS";
+                    break;
+                case Keys.Right:
+                    movement = "RS";
+                    break;
+                case Keys.Up:
+                    movement = "US";
+                    break;
+                case Keys.Down:
+                    movement = "DS";
+                    break;
+                default:
+                    return;
+
+            }
+            CubeMove move = new CubeMove(movement);
+            lblStatus.Text = "Last Move: " + move;
+            rubiksCube.MakeMove(move);
+            tableLayoutPanel.Invalidate();
+        }
+
+        private void MainForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            KeyMove(e.KeyCode);
+        }
     }
+
 }

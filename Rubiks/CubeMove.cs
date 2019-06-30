@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace RubiksCubeSimulator.Rubiks
 {
@@ -17,10 +18,18 @@ namespace RubiksCubeSimulator.Rubiks
         /// </summary>
         public Rotation Rotation { get; }
 
+        public int MovesCount { get; }
         public CubeMove(CubeSide side, Rotation rotation)
         {
             Side = side;
             Rotation = rotation;
+            MovesCount = 1;
+        }
+        public CubeMove(CubeSide side, Rotation rotation, int movementCount)
+        {
+            Side = side;
+            Rotation = rotation;
+            MovesCount = movementCount;
         }
 
         /// <summary>
@@ -29,7 +38,13 @@ namespace RubiksCubeSimulator.Rubiks
         /// <exception cref="ArgumentException">Value is not valid notation.</exception>
         public CubeMove(string notation)
         {
-            switch (notation.Trim().ToLower())
+            String movement= new string((from t in notation where !char.IsDigit(t) select t).ToArray());
+            String movementCount = new string((from t in notation where char.IsDigit(t) select t).ToArray());
+            int count = 0;
+            MovesCount = 1;
+            int.TryParse(movementCount, out count);
+            if(count>0) MovesCount = count;
+            switch (movement.Trim().ToLower())
             {
                 case "f":
                     Rotation = Rotation.Cw;
@@ -90,6 +105,22 @@ namespace RubiksCubeSimulator.Rubiks
                     Rotation = Rotation.Ccw;
                     Side = CubeSide.Down;
                     break;
+                case "rs":
+                    Rotation = Rotation.RTurn;
+                    Side = CubeSide.Front;
+                    break;
+                case "ls":
+                    Rotation = Rotation.LTurn;
+                    Side = CubeSide.Front;
+                    break;
+                case "us":
+                    Rotation = Rotation.UpWard;
+                    Side = CubeSide.Front;
+                    break;
+                case "ds":
+                    Rotation = Rotation.DownWard;
+                    Side = CubeSide.Front;
+                    break;
 
                 default:
                     throw new ArgumentException("Value is not valid notation.", nameof(notation));
@@ -111,6 +142,7 @@ namespace RubiksCubeSimulator.Rubiks
             }
 
             text += (Rotation == Rotation.Cw) ? "CW" : "CCW";
+            text += MovesCount > 1 ? " " + MovesCount + "" : "";
             return text;
         }
     }
