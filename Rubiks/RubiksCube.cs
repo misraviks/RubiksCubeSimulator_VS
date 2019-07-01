@@ -378,6 +378,10 @@ namespace RubiksCubeSimulator.Rubiks
                     case Algorithm.Li: MakeMove(CubeSide.Left, Rotation.Ccw); break;
                     case Algorithm.R:  MakeMove(CubeSide.Right, Rotation.Cw); break;
                     case Algorithm.Ri: MakeMove(CubeSide.Right, Rotation.Ccw); break;
+                    case Algorithm.LTurn:MakeMove(CubeSide.Front, Rotation.LTurn); break;
+                    case Algorithm.RTurn: MakeMove(CubeSide.Front, Rotation.RTurn); break;
+                    case Algorithm.UpWard: MakeMove(CubeSide.Front, Rotation.UpWard); break;
+                    case Algorithm.DownWard: MakeMove(CubeSide.Front, Rotation.DownWard); break;
                     default:
                         throw new InvalidEnumArgumentException(
                             nameof(algorithm), (int)algorithm, algorithm.GetType());
@@ -389,7 +393,7 @@ namespace RubiksCubeSimulator.Rubiks
         public void MakeMove(CubeSide side, Rotation rotation,int movement=1)
         {
             if (side == CubeSide.None) return;
-            RotateFace(side, rotation);
+            if(rotation <= Rotation.DownWard)RotateFace(side, rotation);
             // Rotate non-face colors
             // No need to set middle colors as newColors is a full copy
             var newColors = CloneColors(AllColors);
@@ -546,6 +550,84 @@ namespace RubiksCubeSimulator.Rubiks
                         }
                     }
                     #endregion
+
+                    #region Horizontal
+                    else if (rotation == Rotation.MiddleLayerHorizone)
+                    {
+                        // 0 Front, 1 back, 2 right, 3 left, 4 up, 5 down
+
+                        for (int i = 0; i < 3; i++)
+                        {
+                            // Shift Left  to Front
+                            newColors[0][1, i] = LeftColors[1, i];
+                            // Shift Right to Back
+                            //newColors[1][i, 0] = RightColors[i, 0];
+                            newColors[1][1, i] = RightColors[ 1,i];
+                            // Shift front to right
+                            newColors[2][1, i] = FrontColors[1, i];
+                            // Shift Back to left
+                            newColors[3][1, i] = BackColors[1, i];
+                        }
+                    }
+                    #endregion
+
+                    #region Horizontal Inverse
+                    else if (rotation == Rotation.MiddleLayerHorizoneInverse)
+                    {
+                        // 0 Front, 1 back, 2 right, 3 left, 4 up, 5 down
+
+                        for (int i = 0; i < 3; i++)
+                        {
+                            // Shift Left  to Front
+                            newColors[0][1, i] = RightColors[1, i];
+                            // Shift Left to Back
+                            newColors[1][1, i] = LeftColors[1, i];
+                            // Shift Back to Right
+                            newColors[2][1, i] = BackColors[1, i];
+                            // Shift Front to left
+                            newColors[3][1, i] = FrontColors[1, i];
+                        }
+                    }
+                    #endregion
+
+                    #region Vertical
+                    else if (rotation == Rotation.MiddleLayerVertical)
+                    {
+                        // 0 Front, 1 back, 2 right, 3 left, 4 up, 5 down
+
+                        for (int i = 0; i < 3; i++)
+                        {
+                            // Shift Down  to Front
+                            newColors[0][i, 1] = DownColors[i, 1];
+                            // Shift Up to Back
+                            newColors[1][i, 1] = UpColors[i, 1];
+                            // Shift front to Up
+                            newColors[4][i, 1] = FrontColors[i, 1];
+                            // Shift Back to Down
+                            newColors[5][i, 1] = BackColors[i, 1];
+                        }
+                    }
+                    #endregion
+
+                    #region Vertical Inverse
+                    else if (rotation == Rotation.MiddleLayerVerticalInverse)
+                    {
+                        // 0 Front, 1 back, 2 right, 3 left, 4 up, 5 down
+
+                        for (int i = 0; i < 3; i++)
+                        {
+                            // Shift Up  to Front
+                            newColors[0][i, 1] = UpColors[i, 1];
+                            // Shift Down to Back
+                            newColors[1][i, 1] = DownColors[i, 1];
+                            // Shift Back to Up
+                            newColors[4][i, 1] = BackColors[i, 1];
+                            // Shift Front to Down
+                            newColors[5][i, 1] = FrontColors[i, 1];
+                        }
+                    }
+                    #endregion
+
                     break;
                 #endregion
 
@@ -780,6 +862,7 @@ namespace RubiksCubeSimulator.Rubiks
                     }
                     break;
                 #endregion
+
             }
 
             AllColors = newColors;

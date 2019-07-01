@@ -121,6 +121,22 @@ namespace RubiksCubeSimulator.Rubiks
                     Rotation = Rotation.DownWard;
                     Side = CubeSide.Front;
                     break;
+                case "h":
+                    Rotation = Rotation.MiddleLayerHorizone;
+                    Side = CubeSide.Front;
+                    break;
+                case "hi":
+                    Rotation = Rotation.MiddleLayerHorizoneInverse;
+                    Side = CubeSide.Front;
+                    break;
+                case "v":
+                    Rotation = Rotation.MiddleLayerVertical;
+                    Side = CubeSide.Front;
+                    break;
+                case "vi":
+                    Rotation = Rotation.MiddleLayerVerticalInverse;
+                    Side = CubeSide.Front;
+                    break;
 
                 default:
                     throw new ArgumentException("Value is not valid notation.", nameof(notation));

@@ -106,9 +106,8 @@ namespace RubiksCubeSimulator.Forms
 
         private void textBoxCommand_KeyDown(object sender, KeyEventArgs e)
         {
-           // String s1 = Regex.Match("helo12s12", @"\d+").Value; 
-
-            String Scramble = "D2 U2 R B D F' L2 F2 D U B' U2 D2 L2 B' L' F R L F2 U2 L2 U2 D' L2";
+          
+            String Scramble = "D2 U2 R B D Fi L2 F2 D U Bi U2 D2 L2 Bi Li F R L F2 U2 L2 U2 Di L2";
             textBoxCommand.BackColor = Color.FromKnownColor(KnownColor.Window);
             if (e.KeyCode == Keys.Left || e.KeyCode == Keys.Right|| e.KeyCode == Keys.Up || e.KeyCode == Keys.Down)
             {
@@ -130,19 +129,7 @@ namespace RubiksCubeSimulator.Forms
                 try
                 {
                     string moveToBeMade = str.Replace("'", "i");
-                    if (str.ToLower() == "h")
-                    {
-                        // UP Inverse and Down 
-                        moveList.Add(new CubeMove("Ui"));
-                        moveList.Add(new CubeMove("D"));
-                    }
-                    else if (str.ToLower() == "hi")
-                    {
-                        // UP and Down Inverse
-                        moveList.Add(new CubeMove("U"));
-                        moveList.Add(new CubeMove("Di"));
-                    }
-                    else if (str.ToLower() == "v")
+                    if (str.ToLower() == "vasdf")
                     {
 
                         moveList.Add(new CubeMove("L"));

@@ -28,10 +28,23 @@
         /// <summary>
         /// DownWard
         /// </summary>
-        DownWard
-
-
-
+        DownWard,
+        /// <summary>
+        /// Horizontal Moving Middle Layer
+        /// </summary>
+        MiddleLayerHorizone,
+        /// <summary>
+        /// Horizontal Inverse Moving Middle Layer
+        /// </summary>
+        MiddleLayerHorizoneInverse,
+        /// <summary>
+        /// Vertical Moving Middle Layer
+        /// </summary>
+        MiddleLayerVertical,
+        /// <summary>
+        /// Vertical Inverse Moving Middle Layer
+        /// </summary>
+        MiddleLayerVerticalInverse
     }
 
     /// <summary>
@@ -64,6 +77,8 @@
         /// The bottom of the cube.
         /// </summary>
         Down
+
+
     }
 
     /// <summary>
@@ -118,6 +133,22 @@
         /// <summary>
         /// Back CCW.
         /// </summary>
-        Bi
+        Bi,
+        /// <summary>
+        /// Right Spin
+        /// </summary>
+        RTurn,
+        /// <summary>
+        /// Left Spin
+        /// </summary>
+        LTurn,
+        /// <summary>
+        /// UpWard
+        /// </summary>
+        UpWard,
+        /// <summary>
+        /// DownWard
+        /// </summary>
+        DownWard
     }
 }
