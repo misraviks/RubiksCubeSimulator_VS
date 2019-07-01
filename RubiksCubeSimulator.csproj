@@ -42,6 +42,7 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithms\CubeDetails.cs" />
     <Compile Include="ColorGrid\ColorGridRendering.cs" />
     <Compile Include="ColorGrid\ColorGridStyle.cs" />
     <Compile Include="ExtensionMethods.cs" />

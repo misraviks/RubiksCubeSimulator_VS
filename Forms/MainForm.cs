@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using RubiksCubeSimulator.Algorithms;
 using RubiksCubeSimulator.Rubiks;
 
 namespace RubiksCubeSimulator.Forms
@@ -143,6 +144,7 @@ namespace RubiksCubeSimulator.Forms
                 lblStatus.Text = "Last Move: " + move;
                 rubiksCube.MakeMove(move);
             }
+            rubiksCube.cubeDetails = new CubeDetails(rubiksCube);
 
             e.SuppressKeyPress = true;
             textBoxCommand.Clear();

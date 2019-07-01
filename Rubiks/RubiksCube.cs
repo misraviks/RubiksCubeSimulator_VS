@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RubiksCubeSimulator.Algorithms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -14,6 +15,9 @@ namespace RubiksCubeSimulator.Rubiks
         private readonly Color[][,] origColors;
 
         #region Properties
+
+        public CubeDetails cubeDetails;
+
         public bool RaiseEvents { get; set; } = true;
 
         /// <summary>
@@ -25,31 +29,31 @@ namespace RubiksCubeSimulator.Rubiks
         public Color[,] FrontColors
         {
             get { return AllColors[0]; }
-            private set {  AllColors[0] = value; }
+            private set { AllColors[0] = value; }
         }
 
         public Color[,] BackColors
         {
             get { return AllColors[1]; }
-            private set {AllColors[1] = value; }
+            private set { AllColors[1] = value; }
         }
 
         public Color[,] RightColors
         {
             get { return AllColors[2]; }
-            private set{ AllColors[2] = value; }
+            private set { AllColors[2] = value; }
         }
 
         public Color[,] LeftColors
         {
             get { return AllColors[3]; }
-            private set  {AllColors[3] = value; }
+            private set { AllColors[3] = value; }
         }
 
         public Color[,] UpColors
         {
             get { return AllColors[4]; }
-            private set{ AllColors[4] = value;  }
+            private set { AllColors[4] = value; }
         }
 
         public Color[,] DownColors
@@ -113,6 +117,7 @@ namespace RubiksCubeSimulator.Rubiks
             }
         }
         #endregion
+
 
         /// <summary>
         /// Creates an instance of the RubiksCube.
@@ -192,7 +197,7 @@ namespace RubiksCubeSimulator.Rubiks
                     invalidFaceColors.Push(color);
                 }
             }
-      
+
             // Find colors occuring more than 9 times
             var scheme = GetColorScheme();
             int frontCount = 0;
@@ -225,7 +230,7 @@ namespace RubiksCubeSimulator.Rubiks
             bool redundantDistinct = (GetColorsFlattened().Distinct().Count() > 6);
 
             return new ColorDefect(excessiveColors.ToArray(),
-                invalidFaceColors.ToArray(), redundantDistinct); 
+                invalidFaceColors.ToArray(), redundantDistinct);
         }
 
         /// <summary>
@@ -366,19 +371,19 @@ namespace RubiksCubeSimulator.Rubiks
             {
                 switch (algorithm)
                 {
-                    case Algorithm.F:  MakeMove(CubeSide.Front, Rotation.Cw); break;
+                    case Algorithm.F: MakeMove(CubeSide.Front, Rotation.Cw); break;
                     case Algorithm.Fi: MakeMove(CubeSide.Front, Rotation.Ccw); break;
-                    case Algorithm.B:  MakeMove(CubeSide.Back, Rotation.Cw); break;
+                    case Algorithm.B: MakeMove(CubeSide.Back, Rotation.Cw); break;
                     case Algorithm.Bi: MakeMove(CubeSide.Back, Rotation.Ccw); break;
-                    case Algorithm.U:  MakeMove(CubeSide.Up, Rotation.Cw); break;
+                    case Algorithm.U: MakeMove(CubeSide.Up, Rotation.Cw); break;
                     case Algorithm.Ui: MakeMove(CubeSide.Up, Rotation.Ccw); break;
-                    case Algorithm.D:  MakeMove(CubeSide.Down, Rotation.Cw); break;
+                    case Algorithm.D: MakeMove(CubeSide.Down, Rotation.Cw); break;
                     case Algorithm.Di: MakeMove(CubeSide.Down, Rotation.Ccw); break;
-                    case Algorithm.L:  MakeMove(CubeSide.Left, Rotation.Cw); break;
+                    case Algorithm.L: MakeMove(CubeSide.Left, Rotation.Cw); break;
                     case Algorithm.Li: MakeMove(CubeSide.Left, Rotation.Ccw); break;
-                    case Algorithm.R:  MakeMove(CubeSide.Right, Rotation.Cw); break;
+                    case Algorithm.R: MakeMove(CubeSide.Right, Rotation.Cw); break;
                     case Algorithm.Ri: MakeMove(CubeSide.Right, Rotation.Ccw); break;
-                    case Algorithm.LTurn:MakeMove(CubeSide.Front, Rotation.LTurn); break;
+                    case Algorithm.LTurn: MakeMove(CubeSide.Front, Rotation.LTurn); break;
                     case Algorithm.RTurn: MakeMove(CubeSide.Front, Rotation.RTurn); break;
                     case Algorithm.UpWard: MakeMove(CubeSide.Front, Rotation.UpWard); break;
                     case Algorithm.DownWard: MakeMove(CubeSide.Front, Rotation.DownWard); break;
@@ -389,11 +394,11 @@ namespace RubiksCubeSimulator.Rubiks
             }
         }
 
-        
-        public void MakeMove(CubeSide side, Rotation rotation,int movement=1)
+
+        public void MakeMove(CubeSide side, Rotation rotation, int movement = 1)
         {
             if (side == CubeSide.None) return;
-            if(rotation <= Rotation.DownWard)RotateFace(side, rotation);
+            if (rotation <= Rotation.DownWard) RotateFace(side, rotation);
             // Rotate non-face colors
             // No need to set middle colors as newColors is a full copy
             var newColors = CloneColors(AllColors);
@@ -422,7 +427,7 @@ namespace RubiksCubeSimulator.Rubiks
                         newColors[3][1, 2] = DownColors[0, 1];
                         newColors[3][2, 2] = DownColors[0, 2];
                     }
-                    else if(rotation == Rotation.Ccw)
+                    else if (rotation == Rotation.Ccw)
                     {
                         // 0 Front, 1 back, 2 right, 3 left, 4 up, 5 down
                         // Shift up to left
@@ -442,12 +447,12 @@ namespace RubiksCubeSimulator.Rubiks
                         newColors[5][0, 1] = LeftColors[1, 2];
                         newColors[5][0, 2] = LeftColors[2, 2];
                     }
-                    
+
                     #region Right Turn
                     else if (rotation == Rotation.RTurn)
                     {
                         // 0 Front, 1 back, 2 right, 3 left, 4 up, 5 down
-                        
+
                         for (int i = 0; i < 3; i++)
                         {
                             // Shift Left  to Front
@@ -469,7 +474,7 @@ namespace RubiksCubeSimulator.Rubiks
                         }
                     }
                     #endregion
-                   
+
                     #region Left Turn
                     else if (rotation == Rotation.LTurn)
                     {
@@ -562,7 +567,7 @@ namespace RubiksCubeSimulator.Rubiks
                             newColors[0][1, i] = LeftColors[1, i];
                             // Shift Right to Back
                             //newColors[1][i, 0] = RightColors[i, 0];
-                            newColors[1][1, i] = RightColors[ 1,i];
+                            newColors[1][1, i] = RightColors[1, i];
                             // Shift front to right
                             newColors[2][1, i] = FrontColors[1, i];
                             // Shift Back to left
@@ -861,14 +866,13 @@ namespace RubiksCubeSimulator.Rubiks
                         newColors[1][2, 2] = RightColors[2, 2];
                     }
                     break;
-                #endregion
+                    #endregion
 
             }
 
             AllColors = newColors;
-
             if (RaiseEvents)
-                OnMoveMade(new CubeMove(side, rotation,movement));
+                OnMoveMade(new CubeMove(side, rotation, movement));
         }
 
         /// <summary>
@@ -879,5 +883,7 @@ namespace RubiksCubeSimulator.Rubiks
             var colors = CloneColors(AllColors);
             return new RubiksCube(colors);
         }
+
+        
     }
 }
