@@ -129,19 +129,7 @@ namespace RubiksCubeSimulator.Forms
                 try
                 {
                     string moveToBeMade = str.Replace("'", "i");
-                    if (str.ToLower() == "vasdf")
-                    {
-
-                        moveList.Add(new CubeMove("L"));
-                        moveList.Add(new CubeMove("Ri"));
-                    }
-                    else if (str.ToLower() == "vi")
-                    {
-
-                        moveList.Add(new CubeMove("Li"));
-                        moveList.Add(new CubeMove("R"));
-                    }
-                    else moveList.Add(new CubeMove(moveToBeMade));
+                    moveList.Add(new CubeMove(moveToBeMade));
                 }
                 catch (ArgumentException)
                 {
