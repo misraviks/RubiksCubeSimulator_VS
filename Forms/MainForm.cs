@@ -13,7 +13,7 @@ namespace RubiksCubeSimulator.Forms
     public partial class MainForm : Form
     {
         private RubiksCube rubiksCube;
-
+        private CubeDetails cubeDetails;
         /// <summary>
         /// Gets all of the cube displays on the form.
         /// </summary>
@@ -32,6 +32,7 @@ namespace RubiksCubeSimulator.Forms
             SetRubiksCube();
             SetHoverEffect();
             UpdateErrorStatus();
+            cubeDetails = new CubeDetails(rubiksCube);
         }
 
         private void SetRubiksCube()
@@ -41,7 +42,7 @@ namespace RubiksCubeSimulator.Forms
 
             // Create a solved cube with the developers color scheme
             //rubiksCube = RubiksCube.Create(CubeColorScheme.DevsScheme);
-
+            
             rubiksCube.MoveMade += RubiksCubeMoveMade;
             UpdateDisplayedCube();
         }
@@ -144,11 +145,12 @@ namespace RubiksCubeSimulator.Forms
                 lblStatus.Text = "Last Move: " + move;
                 rubiksCube.MakeMove(move);
             }
-            rubiksCube.cubeDetails = new CubeDetails(rubiksCube);
-
+            
+            
             e.SuppressKeyPress = true;
             textBoxCommand.Clear();
             tableLayoutPanel.Invalidate();
+            
         }
 
         private void checkBoxLockColors_CheckedChanged(object sender, EventArgs e)
@@ -172,9 +174,15 @@ namespace RubiksCubeSimulator.Forms
 
         private void RubiksCubeMoveMade(object sender, CubeMove move)
         {
+            cubeDetails = new CubeDetails(rubiksCube);
             if (rubiksCube.Solved)
             {
                 lblStatus.Text = "Cube Solved";
+                lblStatus.ForeColor = Color.Green;
+            }
+            else if (cubeDetails.DaisyFormed())
+            {
+                lblStatus.Text = "Daisy Solved";
                 lblStatus.ForeColor = Color.Green;
             }
             else

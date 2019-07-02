@@ -123,7 +123,8 @@ namespace RubiksCubeSimulator.ColorGrid
             var master = GetMasterRectangle(style, drawRegion);
             var backPath = RoundedRectangleF.Create(master, style.RoundedRadius);
             graphics.FillPath(enabled ? Brushes.Black : Brushes.DimGray, backPath);
-
+           
+            //graphics.DrawString("", font, brush1, Point.Empty);
             for (int row = 0; row < style.Colors.GetLength(0); row++)
             {
                 for (int clm = 0; clm < style.Colors.GetLength(1); clm++)
@@ -135,6 +136,9 @@ namespace RubiksCubeSimulator.ColorGrid
                     float y = (yOffset + cellDim * clm) + spacing;
                     var path = RoundedRectangleF.Create(x, y, dim, dim, style.RoundedRadius);
                     graphics.FillPath(brush, path);
+                    //Font font = new Font("Times New Roman", 10);
+                    //var brush1 = new SolidBrush(Color.Black);
+                   // graphics.DrawString($"[{row}][{clm}]", font, brush1, x , y );
                     brush.Dispose();
                 }
             }
