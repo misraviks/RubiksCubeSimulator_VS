@@ -90,6 +90,7 @@ namespace RubiksCubeSimulator.Forms
         {
             if (ShowQuestionPrompt("Are you sure you want to undo changes?") == DialogResult.Yes)
             {
+                this.Text = "Rubiks Cube Simulator";
                 labellErrorStatus.Text = string.Empty;
                 rubiksCube.CleanSlate();
                 tableLayoutPanel.Invalidate(true);
@@ -100,6 +101,7 @@ namespace RubiksCubeSimulator.Forms
         {
             if (ShowQuestionPrompt("Are you sure you want to undo changes?") == DialogResult.Yes)
             {
+                this.Text = "Rubiks Cube Simulator";
                 labellErrorStatus.Text = string.Empty;
                 rubiksCube.Restore();
                 tableLayoutPanel.Invalidate(true);
@@ -190,6 +192,7 @@ namespace RubiksCubeSimulator.Forms
                 lblStatus.ForeColor = Color.FromKnownColor(KnownColor.ControlText);
                 lblStatus.Text = "Last Move: " + move;
             }
+            this.Text = "Rubiks Cube Simulator ->> " + rubiksCube.MovesMade+" Moves Made";
         }
 
         private void tableLayoutPanel_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)

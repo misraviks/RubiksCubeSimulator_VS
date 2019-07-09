@@ -18,6 +18,9 @@ namespace RubiksCubeSimulator.Rubiks
         
         public bool RaiseEvents { get; set; } = true;
 
+        private Int32 _moveMade = 0;
+        public Int32 MovesMade { get { return _moveMade; } }
+
         /// <summary>
         /// Gets the color matrix for this cube. Face arrays are as follows:
         /// Front 0, Back 1, Right 2, left 3, Up 4, Down 5.
@@ -148,6 +151,7 @@ namespace RubiksCubeSimulator.Rubiks
         {
             // Clone original so we do not modify it.
             AllColors = CloneColors(origColors);
+            _moveMade = 0;
         }
 
         /// <summary>
@@ -238,6 +242,7 @@ namespace RubiksCubeSimulator.Rubiks
         {
             var cube = Create(GetColorScheme());
             AllColors = cube.AllColors;
+            _moveMade = 0;
         }
 
         /// <summary>
@@ -924,7 +929,7 @@ namespace RubiksCubeSimulator.Rubiks
                     #endregion
 
             }
-
+            _moveMade++;
             AllColors = newColors;
             if (RaiseEvents)
                 OnMoveMade(new CubeMove(side, rotation, movement));
