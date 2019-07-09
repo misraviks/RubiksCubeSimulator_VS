@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace RubiksCubeSimulator.Rubiks
@@ -19,6 +20,8 @@ namespace RubiksCubeSimulator.Rubiks
         public Rotation Rotation { get; }
 
         public int MovesCount { get; }
+
+        public List<CubeMove> listMoves;
         public CubeMove(CubeSide side, Rotation rotation)
         {
             Side = side;
@@ -38,6 +41,7 @@ namespace RubiksCubeSimulator.Rubiks
         /// <exception cref="ArgumentException">Value is not valid notation.</exception>
         public CubeMove(string notation)
         {
+            listMoves = null;
             String movement= new string((from t in notation where !char.IsDigit(t) select t).ToArray());
             String movementCount = new string((from t in notation where char.IsDigit(t) select t).ToArray());
             int count = 0;
@@ -106,20 +110,30 @@ namespace RubiksCubeSimulator.Rubiks
                     Side = CubeSide.Down;
                     break;
                 case "rs":
-                    Rotation = Rotation.RTurn;
-                    Side = CubeSide.Front;
+                    listMoves = new List<CubeMove>();
+                    listMoves.Add(new CubeMove("ui"));
+                    listMoves.Add(new CubeMove("h"));
+                    listMoves.Add(new CubeMove("d"));
+                    // Rotation = Rotation.RTurn;
+                    // Side = CubeSide.Front;
                     break;
                 case "ls":
-                    Rotation = Rotation.LTurn;
-                    Side = CubeSide.Front;
+                    listMoves = new List<CubeMove>();
+                    listMoves.Add(new CubeMove("u"));
+                    listMoves.Add(new CubeMove("hi"));
+                    listMoves.Add(new CubeMove("di"));
                     break;
                 case "us":
-                    Rotation = Rotation.UpWard;
-                    Side = CubeSide.Front;
+                    listMoves = new List<CubeMove>();
+                    listMoves.Add(new CubeMove("r"));
+                    listMoves.Add(new CubeMove("v"));
+                    listMoves.Add(new CubeMove("li"));
                     break;
                 case "ds":
-                    Rotation = Rotation.DownWard;
-                    Side = CubeSide.Front;
+                    listMoves = new List<CubeMove>();
+                    listMoves.Add(new CubeMove("ri"));
+                    listMoves.Add(new CubeMove("vi"));
+                    listMoves.Add(new CubeMove("l"));
                     break;
                 case "h":
                     Rotation = Rotation.MiddleLayerHorizone;

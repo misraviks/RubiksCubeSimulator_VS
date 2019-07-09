@@ -15,7 +15,7 @@ namespace RubiksCubeSimulator.Rubiks
         private readonly Color[][,] origColors;
 
         #region Properties
-
+        
         public bool RaiseEvents { get; set; } = true;
 
         /// <summary>
@@ -371,12 +371,21 @@ namespace RubiksCubeSimulator.Rubiks
 
         public void MakeMove(CubeMove move)
         {
-            int movement = move.MovesCount;
-            while (movement > 0)
+            if (move.listMoves == null)
             {
-                MakeMove(move.Side, move.Rotation, move.MovesCount);
-                movement--;
+                int movement = move.MovesCount;
+                while (movement > 0)
+                {
+                    MakeMove(move.Side, move.Rotation, move.MovesCount);
+                    movement--;
+                }
             }
+            else MakeMove(move.listMoves);
+        }
+
+        public void MakeMove(List<CubeMove> moves)
+        {
+            foreach (CubeMove move in moves) MakeMove(move);
         }
 
         /// <summary>
@@ -488,14 +497,29 @@ namespace RubiksCubeSimulator.Rubiks
                             newColors[3][i, 0] = BackColors[i, 0];
                             newColors[3][i, 1] = BackColors[i, 1];
                             newColors[3][i, 2] = BackColors[i, 2];
-
                         }
-                        // Rotate Up
-                        newColors[4] = RotateSide(CubeSide.Up, Rotation.Ccw);
-                      
-                        // Rotate Down
-                        newColors[5]= RotateSide(CubeSide.Down, Rotation.Ccw);
-                     
+                        //Move Up
+                        newColors[4][0, 0] = UpColors[0, 2];
+                        newColors[4][0, 1] = UpColors[1, 2];
+                        newColors[4][0, 2] = UpColors[2, 2];
+                        newColors[4][1, 0] = UpColors[0, 1];
+                        newColors[4][1, 1] = UpColors[1, 1];
+                        newColors[4][1, 2] = UpColors[2, 1];
+                        newColors[4][2, 0] = UpColors[0, 0];
+                        newColors[4][2, 1] = UpColors[1, 0];
+                        newColors[4][2, 2] = UpColors[2, 0];
+                        //Move Down
+                        newColors[5][0, 0] = DownColors[0, 2];
+                        newColors[5][0, 1] = DownColors[1, 2];
+                        newColors[5][0, 2] = DownColors[2, 2];
+                        newColors[5][1, 0] = DownColors[0, 1];
+                        newColors[5][1, 1] = DownColors[1, 1];
+                        newColors[5][1, 2] = DownColors[2, 1];
+                        newColors[5][2, 0] = DownColors[0, 0];
+                        newColors[5][2, 1] = DownColors[1, 0];
+                        newColors[5][2, 2] = DownColors[2, 0];
+
+
                     }
                         
                     #endregion
